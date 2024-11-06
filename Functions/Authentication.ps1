@@ -15,6 +15,10 @@
     $username = $global:ZscalerEnvironment.username
     $password = $global:ZscalerEnvironment.password
 
+    
+    $encAPIstr = (ConvertFrom-SecureString -SecureString $apikey)
+    $encPassword = (ConvertFrom-SecureString -SecureString $password) 
+
     #
     # set the URI
     #
@@ -32,6 +36,11 @@
 
     #
     # construct the secret
+    # Need to convert the secure string to plaintext in memory
+
+    $password = [Runtime.InteropServices.Marshal]::PtrToStringAuto([Runtime.InteropServices.Marshal]::SecureStringToBSTR((($encPassword | ConvertTo-SecureString))))
+    $apiKey = [Runtime.InteropServices.Marshal]::PtrToStringAuto([Runtime.InteropServices.Marshal]::SecureStringToBSTR((($encAPIstr | ConvertTo-SecureString))))
+
     #
     $secret = ""
     try {
@@ -55,7 +64,7 @@
     
 
     #
-    # construct our parameters variable
+    # construct our parameters variable. Plain Strings
     #
     $parameters = @{
         apiKey = $secret
@@ -160,16 +169,19 @@ function Set-ZscalerEnvironment
     #>
     param(
         [Parameter(Mandatory=$true)][string]$cloud,
-        [Parameter(Mandatory=$true)][string]$apikey,
+        [Parameter(Mandatory=$true)][securestring]$apikey,
         [Parameter(Mandatory=$true)][string]$username,
-        [Parameter(Mandatory=$true)][string]$password
+        [Parameter(Mandatory=$true)][securestring]$password
     )
 
+    # $password = [Runtime.InteropServices.Marshal]::PtrToStringAuto([Runtime.InteropServices.Marshal]::SecureStringToBSTR($password))
+    # $apiKey = [Runtime.InteropServices.Marshal]::PtrToStringAuto([Runtime.InteropServices.Marshal]::SecureStringToBSTR($apikey))
+    
     $global:ZscalerEnvironment = [PSCustomObject]@{
-        cloud = $cloud
+        cloud =  $cloud
         username = $username
-        password = $password
-        apikey = $apikey
+        password = $password 
+        apikey = $apikey 
         webession = $webession
     }
 }
@@ -189,4 +201,3 @@ function Get-ZscalerSessionCookie
     $uri = ("https://admin.{0}.net/api/v1/authenticatedSession" -f $global:ZscalerEnvironment.cloud)
     return $Global:ZscalerEnvironment.webession.Cookies.GetCookies($uri)[0].ToString()
 }
-
