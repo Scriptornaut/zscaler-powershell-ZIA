@@ -1,6 +1,6 @@
 # zscaler-powershell
 
-# ZIA API Helper Tool (ZIAMenu.ps1)
+## NEW: ZIA API Helper Tool (ZIAMenu.ps1)
 
 A PowerShell script that provides a menu-driven interface for managing Zscaler API sessions.
 
