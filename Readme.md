@@ -1,5 +1,23 @@
 # zscaler-powershell
 
+# ZIA API Helper Tool (ZIAMenu.ps1)
+
+A PowerShell script that provides a menu-driven interface for managing Zscaler API sessions.
+
+## Features
+- **Module Check**: Automatically checks if the Zscaler PowerShell module is loaded, attempts to load it if missing, and offers to permanently add it to the user's profile.
+- **User Menu**:
+  1. **Create New API Session**: Initializes the Zscaler environment and checks for an active session.
+  2. **List Zscaler Commands**: Displays all available commands from the Zscaler PowerShell module.
+  3. **Exit**: Closes the tool.
+
+## Usage
+1. Run the script in PowerShell.
+2. Follow on-screen prompts to manage the module or session.
+
+> **Note**: Ensure the Zscaler PowerShell module (`zscaler.psd1`) is available in your file directory.
+
+
 ### Zscaler Powershell Modules
 This module is intended to be a starting point when interacting with the Zscaler APIs
 
