@@ -58,16 +58,17 @@ function Get-Menu {
     try {
         # Attempt to set up the Zscaler environment
         Set-ZscalerEnvironment
+        Get-ZscalerAPISession
     }
     catch {
         # Handle exceptions if Set-ZscalerEnvironment fails
-        Write-Host -ForegroundColor Red "[!] The Zscaler PowerShell module is not loaded."
+        Write-Host -ForegroundColor Red "[!] Something went wrong setting up your session. Check your credientials and try again."
         }
         
-        else {
-            Write-Host -ForegroundColor Red "[!] Could not locate the Zscaler module. Please ensure it is downloaded and placed in an accessible directory."
-        }
-    }
+    #     else {
+    #         Write-Host -ForegroundColor Red "[!] Could not locate the Zscaler module. Please ensure it is downloaded and placed in an accessible directory."
+    #     }
+     }
   elseif ($choice -eq 2) {
     Get-Command -Module zscaler
     Get-Menu
