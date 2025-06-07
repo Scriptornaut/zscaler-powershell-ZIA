@@ -68,8 +68,9 @@ Description = 'Interact with the Zscaler API through powershell'
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 NestedModules = @('./Functions/Activation.ps1', 
                './Functions/Authentication.ps1', 
-               './Functions/Departments.ps1', 
-               './Functions/Groups.ps1', 
+               './Functions/Departments.ps1',
+               './Functions/Firewall.ps1',
+               './Functions/Groups.ps1',
                './Functions/Locations.ps1', 
                './Functions/Security.ps1', 
                './Functions/SSL.ps1', 

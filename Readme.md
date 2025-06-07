@@ -562,3 +562,36 @@ Update-ZscalerUrlCategory [-id] <string> [-action] <string> [-configuredName] <s
 | <nobr>id</nobr> | None |  | true | false |  |
 | <nobr>urls</nobr> | None |  | false | false |  |
 | <nobr>dbConfiguredUrls</nobr> | None |  | false | false |  |
+
+## Add-ZscalerFirewallRule
+### Syntax
+```powershell
+Add-ZscalerFirewallRule [-name] <string> [-order] <int> [[-rank] <int>] [[-state] <string>] [-action] <string> [-protocols] <string[]> [[-srcIpGroups] <string[]>] [[-destIpGroups] <string[]>] [<CommonParameters>]
+```
+### Examples
+**EXAMPLE 1**
+```powershell
+Add-ZscalerFirewallRule -name "New Rule" -order 1 -action ALLOW -protocols ANY_RULE
+```
+
+## Get-ZscalerFirewallRule
+### Syntax
+```powershell
+Get-ZscalerFirewallRule [[-id] <string>] [<CommonParameters>]
+```
+### Examples
+**EXAMPLE 1**
+```powershell
+Get-ZscalerFirewallRule -id 12345
+```
+
+## Remove-ZscalerFirewallRule
+### Syntax
+```powershell
+Remove-ZscalerFirewallRule [-id] <string> [<CommonParameters>]
+```
+### Examples
+**EXAMPLE 1**
+```powershell
+Remove-ZscalerFirewallRule -id 12345
+```
